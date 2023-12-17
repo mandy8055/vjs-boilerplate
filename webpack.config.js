@@ -1,9 +1,9 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ImageminWebpackPlugin = require('imagemin-webpack-plugin').default;
 
 module.exports = () => {
   const isProduction = process.env.NODE_ENV === 'production';
-  console.log('isProduction', isProduction);
 
   return {
     mode: isProduction ? 'production' : 'development', // Add the mode option
@@ -34,6 +34,29 @@ module.exports = () => {
             },
           },
         },
+        {
+          test: /\.(png|jpe?g|gif|svg)$/i,
+          use: [
+            {
+              loader: 'url-loader',
+              options: {
+                limit: 8192,
+                name: 'assets/[name].[ext]',
+              },
+            },
+          ],
+        },
+        {
+          test: /\.(woff(2)?|ttf|eot)$/i,
+          use: [
+            {
+              loader: 'file-loader',
+              options: {
+                name: 'fonts/[name].[ext]',
+              },
+            },
+          ],
+        },
       ],
     },
     plugins: [
@@ -44,6 +67,13 @@ module.exports = () => {
       new MiniCssExtractPlugin({
         filename: 'styles.css', // Output the extracted CSS to 'styles.css' in the 'public' folder
       }),
+      ...(isProduction
+        ? [
+            new ImageminWebpackPlugin({
+              test: /\.(jpe?g|png|gif|svg)$/i,
+            }),
+          ]
+        : []),
     ],
     devServer: {
       static: './public', // Update the contentBase to the 'public' folder

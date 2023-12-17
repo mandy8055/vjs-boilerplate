@@ -1,6 +1,5 @@
-# project related files
-/public/bundle.js
-/public/styles.css
+# project files
+public/
 # Logs
 logs
 *.log
