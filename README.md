@@ -28,3 +28,7 @@ This is a boilerplate project for building a web application using Vanilla JavaS
 ## Testing
 
 Run the tests using `pnpm test`
+
+## License
+
+[GNU General Public License v3.0](LICENSE)
