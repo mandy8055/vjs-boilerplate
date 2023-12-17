@@ -1,0 +1,20 @@
+$primary-color: #3498db;
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: $primary-color;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  color: #fff;
+  background-color: darken($primary-color, 10%);
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darken($primary-color, 20%);
+  }
+}
