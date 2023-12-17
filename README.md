@@ -11,7 +11,7 @@ This is a boilerplate project for building a web application using Vanilla JavaS
 
 ## Project Structure
 
-- The `public` directory contains the public assets of the web application, including an `index.html` file.
+- The `public` directory contains the public assets of the web application, including an `index.html` file. This will be generated when the web app is built in production environment.
 - The `src` directory contains the source code of the web application.
   - The `index.html` file in the `src` directory is the entry point of the web application.
   - The `index.js` file in the `src` directory is the main JavaScript file that initializes the web application.
